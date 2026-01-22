@@ -1,14 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router"
 import MissionList from "../MissionList.vue"
-import MissionDetail from "../MissionDetail.vue"
+import MissionDetail from "../views/MissionDetail.vue"
 
 const routes = [
   {
     path: "/",
+    name:  'MissionsList',
     component: MissionList
   },
   {
     path: "/mission/:id",
+    name:  'MissionDetail',
     component: MissionDetail
   }
 ]

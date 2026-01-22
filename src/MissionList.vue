@@ -1,13 +1,14 @@
 <template>
-  <section class="list">
-   <MissionCard
-  v-for="mission in missions"
-  :key="mission.id"
-  :id="mission.id"
-  :title="mission.title"
-  :reward="mission.reward"
-/>
+<div>MissionList OK</div>
 
+  <section class="list">
+    <h2>任務列表</h2>
+    <MissionCard
+      v-for="mission in missions"
+      :key="mission.id"
+      :title="mission.title"
+      :reward="mission.reward"
+    />
   </section>
 </template>
 
