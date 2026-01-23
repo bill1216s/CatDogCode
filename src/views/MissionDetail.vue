@@ -12,20 +12,36 @@
 </template>
 
 <script>
+// import { missions } from '../../public/mock/mission';
 
+// export default {
+//   data() {
+//     return {
+//       mission: {
+//         title: "(圖文)Horse發生",
+//         period: "2026/01/14 ~ 2026/01/25",
+//         type: "開箱任務",
+//         reward: "購物金 $500",
+//         signup_time: "2026/01/14 ~ 2026/01/25",
+//         signup_quali: "粉絲數 3,000 以上",
+//         content: "拍攝開箱影片並上傳"
+//       }
+//     }
+//   }
+// }
 export default {
   data() {
     return {
-      mission: {
-        title: "(圖文)Horse發生",
-        period: "2026/01/14 ~ 2026/01/25",
-        type: "開箱任務",
-        reward: "購物金 $500",
-        signup_time: "2026/01/14 ~ 2026/01/25",
-        signup_quali: "粉絲數 3,000 以上",
-        content: "拍攝開箱影片並上傳"
-      }
+      mission: {}
     }
+  },
+ mounted() {
+  const id = Number(this.$route.params.id)
+    fetch("/mock/mission.json")
+    .then(r => r.json())
+    .then(list => {
+      this.mission = list.find(m => m.id === id)
+    })
   }
 }
 </script>

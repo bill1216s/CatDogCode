@@ -1,8 +1,7 @@
 <template>
-<div>MissionList OK</div>
-
   <section class="list">
     <h2>任務列表</h2>
+    
     <MissionCard
       v-for="mission in missions"
       :id="mission.id"

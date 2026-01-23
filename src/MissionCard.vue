@@ -1,11 +1,14 @@
 <template>
  <router-link
   :to="`/mission/${id}`"
-  class="card"
+  custom
+  v-slot="{ navigate }"
 >
+  <div class="card" @click="navigate">
     <h3 class="title">{{ title }}</h3>
     <p class="reward">獎勵：{{ reward }}</p>
     <button class="btn">我要報名</button>
+    </div>
   </router-link>
 </template>
 
