@@ -8,6 +8,10 @@
      <p>報名時間：{{ mission.signup_time }}</p>
      <p>報名資格：{{ mission.signup_quali }}</p>
      <p>任務內容：{{ mission.content }}</p>
+     <router-link to="/signup">
+      <button>我要報名</button>
+      </router-link>
+
   </div>
 </template>
 
