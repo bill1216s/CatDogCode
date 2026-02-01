@@ -21,4 +21,8 @@ export default {
 .content {
   padding: 32px;
 }
+
+.logo {
+  height: 32px;
+}
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div>
     <header class="header">
-      <div class="logo">家樂福</div>
+      <router-link to="/">
+        <img src="/src/assets/image/logo.png" class="logo" />
+      </router-link>
       <nav class="nav">
         <a href="#">創作者福利</a>
         <a href="#">開箱任務牆</a>
