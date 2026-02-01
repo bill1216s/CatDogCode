@@ -1,57 +1,76 @@
 <template>
+  <div class="top" v-if="mission.image">
+    <img :src="mission.image" />
+    <div class="desc">
+      <h3>{{ mission.pagetitle }}</h3>
+      <p>{{ mission.desc }}</p>
+    </div>
+  </div>
+
+
   <div class="detail">
-     <h2>{{ mission.title }}</h2>
-     <br>
-     <p>上線期間：{{ mission.period }}</p>
-     <p>任務類型：{{ mission.type }}</p>
-     <p>報酬：{{ mission.reward }}</p>
-     <p>報名時間：{{ mission.signup_time }}</p>
-     <p>報名資格：{{ mission.signup_quali }}</p>
-     <p>任務內容：{{ mission.content }}</p>
-     <router-link to="/signup">
+    <h2>{{ mission.title }}</h2>
+    <br>
+    <div class="info">
+      <div><span>上線期間</span><span>{{ mission.period }}</span></div>
+      <div><span>任務類型</span><span>{{ mission.type }}</span></div>
+      <div><span>報酬</span><span>{{ mission.reward }}</span></div>
+      <div><span>報名時間</span><span>{{ mission.signup_time }}</span></div>
+      <div><span>報名資格</span><span>{{ mission.signup_quali }}</span></div>
+    </div>
+
+    <router-link :to="{
+      path: '/signup',
+      query: { id: mission.id, name: mission.title }
+    }">
       <button>我要報名</button>
-      </router-link>
+    </router-link>
+
 
   </div>
 </template>
 
 <script>
-// import { missions } from '../../public/mock/mission';
 
-// export default {
-//   data() {
-//     return {
-//       mission: {
-//         title: "(圖文)Horse發生",
-//         period: "2026/01/14 ~ 2026/01/25",
-//         type: "開箱任務",
-//         reward: "購物金 $500",
-//         signup_time: "2026/01/14 ~ 2026/01/25",
-//         signup_quali: "粉絲數 3,000 以上",
-//         content: "拍攝開箱影片並上傳"
-//       }
-//     }
-//   }
-// }
 export default {
   data() {
     return {
       mission: {}
     }
   },
- mounted() {
-  const id = Number(this.$route.params.id)
+  mounted() {
+    const id = Number(this.$route.params.id)
+
+    // const mission = list.find(item => item.id === id)
     fetch("/mock/mission.json")
-    .then(r => r.json())
-    .then(list => {
-      this.mission = list.find(m => m.id === id)
-    })
+      .then(r => r.json())
+      .then(list => {
+        const mission = list.find(m => m.id === id)
+        if (mission?.image) {
+          mission.image = new URL(
+            `../assets/image/${mission.image}`,
+            import.meta.url
+          ).href
+        }
+
+        this.mission = mission
+      })
   }
 }
+
 </script>
 
 <style>
 .detail {
   padding: 32px;
+}
+
+.top {
+  display: flex;
+  gap: 16px;
+}
+
+img {
+  width: 200px;
 }
 </style>
