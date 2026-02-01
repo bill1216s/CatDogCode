@@ -11,13 +11,29 @@
   <div class="detail">
     <h2>{{ mission.title }}</h2>
     <br>
-    <div class="info">
-      <div><span>上線期間</span><span>{{ mission.period }}</span></div>
-      <div><span>任務類型</span><span>{{ mission.type }}</span></div>
-      <div><span>報酬</span><span>{{ mission.reward }}</span></div>
-      <div><span>報名時間</span><span>{{ mission.signup_time }}</span></div>
-      <div><span>報名資格</span><span>{{ mission.signup_quali }}</span></div>
-    </div>
+    <table class="info">
+      <tr>
+        <th>上線期間</th>
+        <td>{{ mission.period }}</td>
+      </tr>
+      <tr>
+        <th>任務類型</th>
+        <td>{{ mission.type }}</td>
+      </tr>
+      <tr>
+        <th>報酬</th>
+        <td>{{ mission.reward }}</td>
+      </tr>
+      <tr>
+        <th>報名時間</th>
+        <td>{{ mission.signup_time }}</td>
+      </tr>
+      <tr>
+        <th>報名資格</th>
+        <td>{{ mission.signup_quali }}</td>
+      </tr>
+    </table>
+
 
     <router-link :to="{
       path: '/signup',
@@ -72,5 +88,20 @@ export default {
 
 img {
   width: 200px;
+}
+
+.info {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.info th {
+  text-align: left;
+  width: 120px;
+  color: #000000;
+}
+
+.info td {
+  padding: 6px 0;
 }
 </style>
