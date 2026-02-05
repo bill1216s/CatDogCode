@@ -1,18 +1,19 @@
 <template>
-  <div>
-    <Header />
-    <main class="content">
-      <router-view />
-    </main>
-  </div>
+  <Header />
+  <Loading v-if="$loading.value" />
+  <main v-else class="content">
+    <router-view />
+  </main>
 </template>
 
 <script>
 import Header from "./Header.vue"
+import Loading from "./components/Loading.vue"
 
 export default {
   components: {
     Header,
+    Loading
   }
 }
 </script>
@@ -26,3 +27,5 @@ export default {
   height: 32px;
 }
 </style>
+
+
