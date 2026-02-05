@@ -1,10 +1,13 @@
 <template>
-  <router-link :to="`/mission/${id}`" custom v-slot="{ navigate }">
-    <div class="card" @click="handleClick(navigate)">
-
-      <h3 class="title">{{ title }}</h3>
-      <p class="reward">獎勵：{{ reward }}</p>
-      <button class="btn">我要報名</button>
+ <router-link
+  :to="`/mission/${id}`"
+  custom
+  v-slot="{ navigate }"
+>
+  <div class="card" @click="navigate">
+    <h3 class="title">{{ title }}</h3>
+    <p class="reward">獎勵：{{ reward }}</p>
+    <button class="btn">我要報名</button>
     </div>
   </router-link>
 </template>
@@ -13,22 +16,13 @@
 export default {
   name: "MissionCard",
   props: {
-    id: Number,
-    title: String,
-    reward: String
-  },
-  methods: {
-    handleClick(navigate) {
-      this.$loading.value = true
-      setTimeout(() => {
-        navigate()
-        this.$loading.value = false
-      }, 1000)
-    }
-  }
+  id: Number,
+  title: String,
+  reward: String
+}
+
 }
 </script>
-
 
 <style>
 .card {
@@ -41,7 +35,7 @@ export default {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .title {

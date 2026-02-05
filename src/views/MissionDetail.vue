@@ -71,6 +71,9 @@ export default {
 
         this.mission = mission
       })
+      .finally(() => {
+        this.$loading.value = false
+      })
   }
 }
 
